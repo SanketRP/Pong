@@ -6,7 +6,7 @@
 
 - 📫 Play it with computer, your friends or let the computer play with itself
 
-- 📽️ Want to watch the video [click here](https://youtu.be/-o_gWjOBpZM)
+- 📽️ Click on the image to watch a demo
 
 <br/>
 
