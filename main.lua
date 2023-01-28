@@ -229,29 +229,32 @@ function love.update(dt)
         end
     end
 
-    --
     -- paddles can move no matter what state we're in
-    --
+
     -- player 1
-    if love.keyboard.isDown('w') then
-        player1.dy = -PADDLE_SPEED
-    elseif love.keyboard.isDown('s') then
-        player1.dy = PADDLE_SPEED
+    if player1.ai then
+        player1:aimove()
     else
-        player1.dy = 0
+        if love.keyboard.isDown('w') then
+            player1.dy = -PADDLE_SPEED
+        elseif love.keyboard.isDown('s') then
+            player1.dy = PADDLE_SPEED
+        else
+            player1.dy = 0
+        end
     end
 
     -- player 2
-    -- Make this one an AI
-    
-    
-
-    if love.keyboard.isDown('up') then
-        player2.dy = -PADDLE_SPEED
-    elseif love.keyboard.isDown('down') then
-        player2.dy = PADDLE_SPEED
+    if player2.ai then
+        player2:aimove()
     else
-        player2.dy = 0
+        if love.keyboard.isDown('up') then
+            player2.dy = -PADDLE_SPEED
+        elseif love.keyboard.isDown('down') then
+            player2.dy = PADDLE_SPEED
+        else
+            player2.dy = 0
+        end
     end
 
     -- update our ball based on its DX and DY only if we're in play state;
@@ -300,6 +303,15 @@ function love.keypressed(key)
                 servingPlayer = 1
             end
         end
+    elseif key == 'lctrl' then
+        player1.ai = false
+        player2.ai = true
+    elseif key == 'rctrl' then
+        player1.ai = false
+        player2.ai = false
+    elseif key == "space" then
+        player1.ai = true
+        player2.ai = true
     end
 end
 
@@ -318,7 +330,9 @@ function love.draw()
         -- UI messages
         love.graphics.setFont(smallFont)
         love.graphics.printf('Welcome to Pong!', 0, 10, VIRTUAL_WIDTH, 'center')
-        love.graphics.printf('Press Enter to begin!', 0, 20, VIRTUAL_WIDTH, 'center')
+        love.graphics.printf('Press Left Ctrl and Enter to play vs computer', 0, 20, VIRTUAL_WIDTH, 'center')
+        love.graphics.printf('Press Right Ctrl and Enter to play with your friend', 0, 30, VIRTUAL_WIDTH, 'center')
+        love.graphics.printf('Press Space and Enter to let the computers play', 0, 40, VIRTUAL_WIDTH, 'center')
     elseif gameState == 'serve' then
         -- UI messages
         love.graphics.setFont(smallFont)
