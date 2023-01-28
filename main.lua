@@ -341,6 +341,7 @@ function love.draw()
         love.graphics.printf('Press Enter to serve!', 0, 20, VIRTUAL_WIDTH, 'center')
     elseif gameState == 'play' then
         -- no UI messages to display in play
+        displayLine()
     elseif gameState == 'done' then
         -- UI messages
         love.graphics.setFont(largeFont)
@@ -374,6 +375,16 @@ function displayScore()
         VIRTUAL_HEIGHT / 3)
     love.graphics.print(tostring(player2Score), VIRTUAL_WIDTH / 2 + 30,
         VIRTUAL_HEIGHT / 3)
+end
+
+function displayLine()
+    love.graphics.setFont(smallFont)
+    --display midline
+    for i = 0, VIRTUAL_HEIGHT do
+        if i % 10 == 0 then
+            love.graphics.print("|", VIRTUAL_WIDTH / 2 - 1, i)
+        end
+    end
 end
 
 --[[
