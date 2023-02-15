@@ -8,6 +8,8 @@
 
 - 📽️ Click on the image to watch a demo
 
+- 🎮 Want to downlaod the game [click here](https://github.com/SanketRP/Pong/releases) to download the game file
+
 <br/>
 
 [![PONG](https://img.youtube.com/vi/-o_gWjOBpZM/0.jpg)](https://www.youtube.com/watch?v=-o_gWjOBpZM)
